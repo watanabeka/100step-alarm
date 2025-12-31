@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- 歩数計使用理由 -->
+    <key>NSMotionUsageDescription</key>
+    <string>アラームを止めるために歩数をカウントします</string>
+
+    <!-- バックグラウンドモード -->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>audio</string>
+        <string>processing</string>
+    </array>
+
+    <!-- アプリの表示名 -->
+    <key>CFBundleDisplayName</key>
+    <string>100歩目覚まし</string>
+
+    <!-- サポートするインターフェース方向 -->
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+
+    <!-- 起動画面 -->
+    <key>UILaunchScreen</key>
+    <dict>
+        <key>UIColorName</key>
+        <string>AccentColor</string>
+    </dict>
+
+    <!-- ステータスバー -->
+    <key>UIStatusBarStyle</key>
+    <string>UIStatusBarStyleDefault</string>
+
+    <!-- 最小OSバージョン -->
+    <key>MinimumOSVersion</key>
+    <string>16.0</string>
+
+    <!-- iTunes File Sharing無効 -->
+    <key>UIFileSharingEnabled</key>
+    <false/>
+
+    <!-- Scene Configuration -->
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+    </dict>
+</dict>
+</plist>
