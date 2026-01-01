@@ -3,7 +3,7 @@ import SwiftData
 
 struct AlarmListView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \Alarm.hour) private var alarms: [Alarm]
+    @Query(sort: [SortDescriptor(\Alarm.hour), SortDescriptor(\Alarm.minute)]) private var alarms: [Alarm]
 
     @State private var showAddAlarm = false
     @State private var selectedAlarm: Alarm?

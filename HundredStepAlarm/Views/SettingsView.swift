@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var emergencyManager = EmergencyStopManager()
     @State private var showResetConfirm = false
     @State private var notificationStatus: String = "確認中..."
+
+    private var emergencyManager: EmergencyStopManager { .shared }
 
     var body: some View {
         Form {

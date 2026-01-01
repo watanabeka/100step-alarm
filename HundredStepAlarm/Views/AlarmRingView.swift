@@ -6,12 +6,14 @@ struct AlarmRingView: View {
 
     @State private var pedometerService = PedometerService()
     @State private var audioService = AudioService()
-    @State private var emergencyManager = EmergencyStopManager()
     @State private var showEmergencyConfirm = false
     @State private var isCompleted = false
 
+    private var emergencyManager: EmergencyStopManager { .shared }
+
     private var progress: Double {
-        min(Double(pedometerService.currentSteps) / Double(alarm.targetSteps), 1.0)
+        guard alarm.targetSteps > 0 else { return 1.0 }
+        return min(Double(pedometerService.currentSteps) / Double(alarm.targetSteps), 1.0)
     }
 
     private var progressColor: Color {

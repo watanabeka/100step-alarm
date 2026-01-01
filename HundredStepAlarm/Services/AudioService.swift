@@ -1,9 +1,11 @@
+import AudioToolbox
 import AVFoundation
 import Foundation
 
 @Observable
 class AudioService {
     private var audioPlayer: AVAudioPlayer?
+    private var systemSoundTimer: Timer?
 
     var isPlaying: Bool = false
     var errorMessage: String?
@@ -52,17 +54,28 @@ class AudioService {
         }
     }
 
-    /// システムサウンドをフォールバックとして再生
+    /// システムサウンドをフォールバックとして再生（ループ用タイマー付き）
     private func playSystemSound() {
-        // AudioServicesPlaySystemSoundを使用
-        AudioServicesPlaySystemSound(1005) // 標準のアラーム音
         isPlaying = true
+        // 即座に再生開始
+        AudioServicesPlaySystemSound(1005)
+
+        // 2秒ごとにシステムサウンドを繰り返す
+        systemSoundTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
+            guard self?.isPlaying == true else {
+                self?.systemSoundTimer?.invalidate()
+                return
+            }
+            AudioServicesPlaySystemSound(1005)
+        }
     }
 
     /// 再生を停止
     func stop() {
         audioPlayer?.stop()
         audioPlayer = nil
+        systemSoundTimer?.invalidate()
+        systemSoundTimer = nil
         isPlaying = false
     }
 

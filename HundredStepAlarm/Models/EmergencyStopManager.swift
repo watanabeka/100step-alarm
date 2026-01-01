@@ -2,6 +2,8 @@ import Foundation
 
 @Observable
 class EmergencyStopManager {
+    static let shared = EmergencyStopManager()
+
     private let userDefaults = UserDefaults.standard
     private let remainingKey = "emergencyStopRemaining"
     private let lastResetKey = "emergencyStopLastReset"
@@ -22,7 +24,7 @@ class EmergencyStopManager {
         }
     }
 
-    init() {
+    private init() {
         resetIfNewMonth()
         if !hasBeenInitialized {
             remaining = maxPerMonth
